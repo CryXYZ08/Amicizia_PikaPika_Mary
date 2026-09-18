@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060814">
+<title>Pika-Pika & Pipina ✨ | Il Nostro Spazio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #050611;
+  --bg-card: rgba(16, 20, 44, 0.76);
+  --bg-card-hover: rgba(26, 30, 62, 0.88);
+
+  /* Tonalità di Blu Zaffiro / Sapphire */
+  --blue: #38bdf8;
+  --blue-vivid: #0ea5e9;
+  --blue-deep: #2563eb;
+  --blue-royal: #1d4ed8;
+  --blue-light: #93c5fd;
+  --blue-ice: #e0f2fe;
+  --blue-glow: rgba(56, 189, 248, 0.45);
+  --blue-border: rgba(56, 189, 248, 0.35);
+
+  /* Tonalità Rosso Sangue Molto Vivo / Vivid Blood Red */
+  --red: #ff002e;
+  --red-vivid: #ff001e;
+  --red-deep: #b8001a;
+  --red-dark: #6e000f;
+  --red-light: #ff2a4b;
+  --red-soft: #ff6078;
+  --red-glow: rgba(255, 0, 46, 0.65);
+  --red-border: rgba(255, 0, 46, 0.45);
+
+  /* Tonalità Oro Imperiale & Champagne / Luxury Gold */
+  --gold: #e2b744;
+  --gold-bright: #fef08a;
+  --gold-champagne: #fdf2d0;
+  --gold-rich: #c59b27;
+  --gold-dark: #8c6710;
+  --gold-glow: rgba(226, 183, 68, 0.5);
+  --gold-border: rgba(226, 183, 68, 0.4);
+  --gold-gradient: linear-gradient(135deg, #fffbeb 0%, #fef08a 25%, #e2b744 60%, #b8860b 100%);
+  --gold-text: linear-gradient(135deg, #ffffff 15%, #fef08a 45%, #e2b744 80%, #b8860b 100%);
+
+  /* Accenti ed elementi grafici di lusso */
+  --glass-border: rgba(226, 183, 68, 0.3);
+  --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.65);
+  --shadow-gold: 0 0 35px rgba(226, 183, 68, 0.25);
+
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+  --line: rgba(255, 255, 255, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(226, 183, 68, 0.35);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050611;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold), var(--red), var(--blue));
+  border-radius: 999px;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.15), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 46, 0.22), transparent 38%),
+    radial-gradient(circle at 50% 45%, rgba(226, 183, 68, 0.1), transparent 45%),
+    radial-gradient(circle at 50% 75%, rgba(37, 99, 235, 0.14), transparent 42%),
+    radial-gradient(circle at 15% 85%, rgba(255, 0, 46, 0.16), transparent 35%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ==================================================== */
+/* LOCK / LOGIN SCREEN (Passcode: 23072026)             */
+/* Perfectly sized for PC, iPhone & Android             */
+/* ==================================================== */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: radial-gradient(circle at 50% 30%, rgba(28, 14, 28, 0.98), #050611 85%);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow-y: auto;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+}
+
+#lock-screen.unlocked {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.lock-card {
+  width: min(340px, 100%);
+  background: linear-gradient(145deg, rgba(22, 24, 52, 0.92), rgba(26, 14, 24, 0.94));
+  border: 1.5px solid rgba(226, 183, 68, 0.45);
+  border-radius: 28px;
+  padding: 24px 22px;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 35px rgba(226, 183, 68, 0.2), inset 0 0 20px rgba(226, 183, 68, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: lockFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes lockFloat {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-5px); }
+}
+
+.lock-logo-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #0d1226;
+  border: 2.5px solid rgba(226, 183, 68, 0.85);
+  box-shadow: 0 0 25px rgba(226, 183, 68, 0.5), 0 0 15px rgba(56, 189, 248, 0.35);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  margin-bottom: 2px;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.lock-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(226, 183, 68, 0.45), 0 0 10px rgba(255, 0, 46, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(226, 183, 68, 0.75), 0 0 18px rgba(56, 189, 248, 0.55); }
+}
+
+.lock-title {
+  font-family: 'Cinzel', serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--gold-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lock-subtitle {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+  margin-top: -4px;
+}
+
+/* PIN Dots Display */
+.pin-display {
+  display: flex;
+  gap: 9px;
+  justify-content: center;
+  margin: 6px 0 2px;
+}
+
+.pin-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(226, 183, 68, 0.6);
+  background: rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+}
+
+.pin-dot.filled {
+  background: var(--gold-gradient);
+  border-color: #ffffff;
+  box-shadow: 0 0 12px var(--gold), 0 0 8px rgba(255, 0, 46, 0.75);
+  transform: scale(1.2);
+}
+
+.lock-error {
+  min-height: 18px;
+  color: #ff2a4b;
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 0, 46, 0.65);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.lock-error.visible {
+  opacity: 1;
+}
+
+.shake {
+  animation: shakeAnim 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shakeAnim {
+  10%, 90% { transform: translate3d(-3px, 0, 0); }
+  20%, 80% { transform: translate3d(5px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+/* Keypad Grid */
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 250px;
+  margin-top: 2px;
+}
+
+.key-btn {
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid rgba(226, 183, 68, 0.3);
+  background: rgba(20, 24, 52, 0.7);
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.15s ease;
+  backdrop-filter: blur(8px);
+}
+
+.key-btn:hover {
+  background: rgba(226, 183, 68, 0.2);
+  border-color: var(--gold);
+  box-shadow: 0 0 15px rgba(226, 183, 68, 0.45);
+  transform: scale(1.04);
+}
+
+.key-btn:active {
+  transform: scale(0.95);
+  background: rgba(226, 183, 68, 0.35);
+}
+
+.key-btn.action {
+  font-size: 15px;
+  color: var(--gold-bright);
+}
+
+/* ==================================================== */
+/* UNLOCK COUNTDOWN SCREEN (Tempo di Sblocco)           */
+/* ==================================================== */
+.countdown-card {
+  width: min(480px, 100%);
+  gap: 10px;
+}
+
+.lock-countdown-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 16px;
+  border: 1px solid rgba(226, 183, 68, 0.45);
+  border-radius: 9999px;
+  background: rgba(20, 16, 42, 0.7);
+  color: var(--gold-champagne);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 0 16px rgba(226, 183, 68, 0.25);
+  margin-bottom: 2px;
+}
+
+.unlock-counter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  width: 100%;
+  margin: 10px 0 6px;
+}
+
+.unlock-counter-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(20, 24, 52, 0.88), rgba(26, 12, 22, 0.92));
+  border: 1.5px solid rgba(226, 183, 68, 0.38);
+  border-radius: 16px;
+  padding: 13px 4px 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(226, 183, 68, 0.18),
+    inset 0 0 14px rgba(226, 183, 68, 0.1);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.unlock-counter-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(254, 240, 138, 0.15), transparent);
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+}
+
+.unlock-counter-card:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: rgba(226, 183, 68, 0.85);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(226, 183, 68, 0.45),
+    0 0 18px rgba(255, 0, 46, 0.4);
+}
+
+.unlock-counter-number {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: clamp(20px, 4.5vw, 30px);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(180deg, #ffffff 15%, #fef08a 55%, #e2b744 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 18px rgba(226, 183, 68, 0.5);
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+.unlock-counter-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fef08a;
+  text-shadow: 0 0 10px rgba(226, 183, 68, 0.4);
+}
+
+.unlock-status-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 2px 0 6px;
+  padding: 8px 14px;
+  background: rgba(10, 14, 30, 0.6);
+  border: 1px solid rgba(226, 183, 68, 0.25);
+  border-radius: 12px;
+  width: 100%;
+}
+
+.unlock-status-note.unlocked-ready {
+  color: #fef08a;
+  border-color: rgba(226, 183, 68, 0.7);
+  box-shadow: 0 0 20px rgba(226, 183, 68, 0.4);
+  background: rgba(226, 183, 68, 0.15);
+}
+
+.btn-lock-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(230, 0, 38, 0.85), rgba(37, 99, 235, 0.8));
+  border: 1.5px solid rgba(226, 183, 68, 0.75);
+  color: #ffffff;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.5),
+    0 0 22px rgba(226, 183, 68, 0.35),
+    0 0 15px rgba(255, 0, 46, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 4px;
+}
+
+.btn-lock-action:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: linear-gradient(135deg, rgba(226, 183, 68, 0.9), rgba(255, 0, 46, 0.92));
+  border-color: #ffffff;
+  box-shadow: 
+    0 14px 35px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(226, 183, 68, 0.6),
+    0 0 25px rgba(255, 0, 46, 0.6);
+}
+
+.btn-lock-back {
+  background: none;
+  border: none;
+  color: var(--gold-bright);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-top: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  opacity: 0.85;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-lock-back:hover {
+  opacity: 1;
+  background: rgba(226, 183, 68, 0.15);
+  text-shadow: 0 0 10px rgba(226, 183, 68, 0.5);
+  transform: translateX(-2px);
+}
+
+.lock-view-anim {
+  animation: lockViewFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes lockViewFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive Lock Screen on Small Mobile */
+@media (max-width: 480px) {
+  .lock-card {
+    width: min(310px, 94vw);
+    padding: 18px 16px;
+    gap: 6px;
+    border-radius: 24px;
+  }
+  .countdown-card {
+    width: min(340px, 95vw);
+    padding: 20px 12px;
+    gap: 8px;
+  }
+  .unlock-counter-grid {
+    gap: 4px;
+  }
+  .unlock-counter-card {
+    padding: 10px 2px 8px;
+    border-radius: 12px;
+  }
+  .unlock-counter-number {
+    font-size: 17px;
+  }
+  .unlock-counter-label {
+    font-size: 8.5px;
+    letter-spacing: 0.8px;
+  }
+  .btn-lock-action {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+  .lock-logo-wrap {
+    width: 52px;
+    height: 52px;
+  }
+  .lock-title {
+    font-size: 17px;
+  }
+  .lock-subtitle {
+    font-size: 11.5px;
+  }
+  .keypad-grid {
+    max-width: 230px;
+    gap: 7px;
+  }
+  .key-btn {
+    height: 42px;
+    font-size: 17px;
+    border-radius: 10px;
+  }
+}
+
+/* Particle Canvas */
+#star-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating Ambient Orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+  animation: orbDrift 18s ease-in-out infinite alternate;
+}
+.orb-1 {
+  width: 420px;
+  height: 420px;
+  background: #2563eb;
+  top: 10%;
+  left: -120px;
+}
+.orb-2 {
+  width: 460px;
+  height: 460px;
+  background: #ff002e;
+  top: 25%;
+  right: -130px;
+  animation-delay: -7s;
+}
+.orb-3 {
+  width: 380px;
+  height: 380px;
+  background: #0284c7;
+  bottom: 10%;
+  left: 20%;
+  animation-delay: -12s;
+}
+
+@keyframes orbDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.08); }
+  100% { transform: translate(-30px, 40px) scale(0.95); }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Navigation Bar */
+.nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  width: min(1040px, calc(100% - 28px));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid rgba(226, 183, 68, 0.35);
+  border-radius: 9999px;
+  background: rgba(8, 10, 24, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(226, 183, 68, 0.15);
+  transition: all 0.3s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+.brand-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  box-shadow: 0 0 14px var(--gold), 0 0 8px var(--red);
+  animation: pulseDot 2.5s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 22px var(--gold), 0 0 14px var(--blue); }
+}
+
+.navlinks {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.navlinks a {
+  padding: 7px 15px;
+  border-radius: 9999px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.navlinks a:hover {
+  background: rgba(226, 183, 68, 0.18);
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(226, 183, 68, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px 70px;
+  text-align: center;
+}
+
+.hero-inner {
+  width: min(960px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Mascot Logo Avatar */
+.logo-container {
+  position: relative;
+  width: 155px;
+  height: 155px;
+  margin-bottom: 2px;
+}
+.logo-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #ff002e, #38bdf8, #fef08a, #2563eb);
+  opacity: 0.85;
+  filter: blur(10px);
+  animation: rotateGlow 6s linear infinite;
+}
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.logo-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #0a0d20;
+  border: 3.5px solid rgba(226, 183, 68, 0.85);
+  box-shadow: 0 0 30px rgba(226, 183, 68, 0.4), inset 0 0 15px rgba(255, 0, 46, 0.35);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.logo-wrap:hover {
+  transform: scale(1.06) rotate(3deg);
+}
+.logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Eyebrow Badge */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  border: 1px solid rgba(226, 183, 68, 0.45);
+  border-radius: 9999px;
+  background: rgba(20, 16, 42, 0.65);
+  backdrop-filter: blur(10px);
+  color: var(--gold-champagne);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  box-shadow: 0 0 25px rgba(226, 183, 68, 0.22);
+}
+
+/* Header Title */
+.hero-title {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: clamp(30px, 5.2vw, 54px);
+  font-weight: 800;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 10%, #fef08a 35%, #e2b744 60%, #93c5fd 85%, #ff002e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(226, 183, 68, 0.45), 0 0 50px rgba(255, 0, 46, 0.45);
+  margin-top: 2px;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: clamp(14.5px, 2vw, 17px);
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ==================================================== */
+/* 6 GLOWING COUNTER BOXES                              */
+/* ==================================================== */
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 820px;
+  margin: 14px 0 8px;
+}
+
+.counter-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(20, 24, 52, 0.78), rgba(26, 12, 22, 0.88));
+  border: 1.5px solid rgba(226, 183, 68, 0.35);
+  border-radius: 18px;
+  padding: 18px 8px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(226, 183, 68, 0.2),
+    inset 0 0 18px rgba(226, 183, 68, 0.1);
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.counter-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(254, 240, 138, 0.12), transparent);
+  border-radius: 18px 18px 0 0;
+  pointer-events: none;
+}
+
+.counter-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  border-color: rgba(226, 183, 68, 0.8);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(226, 183, 68, 0.45),
+    0 0 25px rgba(255, 0, 46, 0.5),
+    inset 0 0 22px rgba(226, 183, 68, 0.2);
+}
+
+.counter-number {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(180deg, #ffffff 15%, #fef08a 55%, #e2b744 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(226, 183, 68, 0.5);
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+.counter-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fef08a;
+  text-shadow: 0 0 10px rgba(226, 183, 68, 0.4);
+}
+
+/* Action Buttons */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.btn-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(18, 20, 44, 0.7);
+  border: 1.5px solid rgba(226, 183, 68, 0.45);
+  color: #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(226, 183, 68, 0.2),
+    inset 0 0 14px rgba(226, 183, 68, 0.1);
+}
+
+.btn-pill:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(135deg, rgba(226, 183, 68, 0.3), rgba(255, 0, 46, 0.32));
+  border-color: rgba(226, 183, 68, 0.9);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 35px rgba(226, 183, 68, 0.5),
+    0 0 25px rgba(255, 0, 46, 0.5);
+  color: #ffffff;
+}
+
+.btn-pill.primary {
+  background: linear-gradient(135deg, rgba(230, 0, 38, 0.85), rgba(37, 99, 235, 0.8));
+  border-color: rgba(226, 183, 68, 0.75);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(226, 183, 68, 0.35),
+    0 0 18px rgba(255, 0, 46, 0.45);
+}
+
+.btn-pill.primary:hover {
+  background: linear-gradient(135deg, rgba(226, 183, 68, 0.85), rgba(255, 0, 46, 0.92));
+  border-color: #ffffff;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    0 0 45px rgba(226, 183, 68, 0.7),
+    0 0 35px rgba(255, 0, 46, 0.7);
+}
+
+/* Sections Styling */
+section {
+  position: relative;
+  z-index: 2;
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 85px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 45px;
+}
+.section-title .mini {
+  color: var(--gold-bright);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-shadow: 0 0 12px rgba(226, 183, 68, 0.5);
+}
+.section-title h2 {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: clamp(26px, 4.2vw, 42px);
+  margin: 6px 0 10px;
+  background: linear-gradient(135deg, #ffffff 25%, #fef08a 55%, #e2b744 85%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.section-title p {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 15.5px;
+}
+
+/* ==================================================== */
+/* VERTICAL TIMELINE SECTION ("STORIA & RICORDI")       */
+/* ==================================================== */
+.timeline-wrap {
+  position: relative;
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+
+/* Central glowing line running downwards */
+.timeline-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3.5px;
+  background: linear-gradient(180deg, 
+    rgba(226, 183, 68, 0.95) 0%, 
+    rgba(255, 0, 46, 0.95) 25%, 
+    rgba(56, 189, 248, 0.95) 50%, 
+    rgba(226, 183, 68, 0.95) 75%, 
+    rgba(255, 0, 46, 0.95) 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(226, 183, 68, 0.6), 0 0 14px rgba(255, 0, 46, 0.65);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 18px 32px;
+  box-sizing: border-box;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* Glowing central node dot */
+.timeline-node {
+  position: absolute;
+  top: 32px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  border: 3.5px solid #070818;
+  box-shadow: 0 0 16px var(--gold), 0 0 8px var(--red);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.timeline-item.left .timeline-node {
+  right: -11px;
+}
+
+.timeline-item.right .timeline-node {
+  left: -11px;
+}
+
+.timeline-item:hover .timeline-node {
+  transform: scale(1.35);
+  box-shadow: 0 0 24px var(--gold), 0 0 18px var(--blue);
+}
+
+/* Timeline Card */
+.timeline-card {
+  background: linear-gradient(145deg, rgba(20, 24, 52, 0.82), rgba(26, 12, 24, 0.88));
+  border: 1.5px solid rgba(226, 183, 68, 0.3);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(226, 183, 68, 0.7);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(226, 183, 68, 0.35);
+}
+
+/* Timeline Initial Text Milestone */
+.timeline-item.milestone-start {
+  width: 100%;
+  left: 0;
+  text-align: center;
+  padding: 0 16px 40px;
+}
+.timeline-item.milestone-start .timeline-node {
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+}
+.timeline-item.milestone-start .timeline-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 34px;
+  border-color: rgba(226, 183, 68, 0.55);
+  background: linear-gradient(145deg, rgba(28, 24, 60, 0.88), rgba(32, 14, 30, 0.92));
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(226, 183, 68, 0.28);
+}
+
+.timeline-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold-bright);
+  background: linear-gradient(135deg, rgba(226, 183, 68, 0.18), rgba(255, 0, 46, 0.2));
+  border: 1px solid rgba(226, 183, 68, 0.4);
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.timeline-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.timeline-card p {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* Timeline Image Media */
+.timeline-media {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(226, 183, 68, 0.25);
+  margin-bottom: 12px;
+  cursor: pointer;
+  aspect-ratio: 16 / 10;
+  background: rgba(0,0,0,0.3);
+}
+
+.timeline-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-media:hover img {
+  transform: scale(1.07);
+}
+
+.timeline-media::after {
+  content: "🔍 Ingrandisci";
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(10, 8, 26, 0.88);
+  border: 1px solid rgba(226, 183, 68, 0.4);
+  color: var(--gold-bright);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.timeline-media:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(4, 5, 15, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: none;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.lightbox.active {
+  display: grid;
+  opacity: 1;
+}
+.lightbox-content {
+  position: relative;
+  max-width: min(92vw, 1050px);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#lb-img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 20px;
+  border: 1.5px solid rgba(226, 183, 68, 0.5);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.85), 0 0 45px rgba(226, 183, 68, 0.3);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+#lb-img.lb-out { opacity: 0; transform: translateX(-30px) scale(0.95); }
+#lb-img.lb-out-prev { opacity: 0; transform: translateX(30px) scale(0.95); }
+#lb-img.lb-in { opacity: 0; transform: translateX(30px) scale(0.95); }
+#lb-img.lb-in-prev { opacity: 0; transform: translateX(-30px) scale(0.95); }
+.lightbox-caption {
+  margin-top: 14px;
+  color: var(--gold-champagne);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  max-width: 720px;
+  padding: 8px 22px;
+  background: rgba(18, 20, 44, 0.92);
+  border: 1px solid rgba(226, 183, 68, 0.4);
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(22, 24, 52, 0.88);
+  border: 1px solid rgba(226, 183, 68, 0.35);
+  color: var(--gold-bright);
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.2s ease;
+}
+.lightbox-close:hover {
+  background: rgba(255, 0, 46, 0.45);
+  border-color: #ff002e;
+  box-shadow: 0 0 15px rgba(255, 0, 46, 0.6);
+  transform: scale(1.1) rotate(90deg);
+}
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(22, 24, 52, 0.88);
+  border: 1px solid rgba(226, 183, 68, 0.35);
+  color: var(--gold-bright);
+  font-size: 24px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+.lightbox-nav:hover {
+  background: rgba(226, 183, 68, 0.3);
+  border-color: var(--gold);
+  box-shadow: 0 0 25px rgba(226, 183, 68, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+/* Letter Styling */
+.letter {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 46px 48px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(22, 26, 56, 0.72), rgba(28, 14, 28, 0.85));
+  border: 1.5px solid rgba(226, 183, 68, 0.38);
+  box-shadow: var(--shadow-lg), 0 0 35px rgba(226, 183, 68, 0.22);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+}
+.letter::before {
+  content: "✦";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  background: #050611;
+  padding: 0 14px;
+  font-size: 16px;
+  text-shadow: 0 0 15px var(--gold);
+}
+.letter p {
+  color: #e2e8f0;
+  font-size: 16.5px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.letter p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+.signature {
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(226, 183, 68, 0.25);
+  color: var(--gold-bright);
+  font-size: 17.5px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-shadow: 0 0 15px rgba(226, 183, 68, 0.45);
+}
+
+/* Future & QR Section */
+.future {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+  align-items: stretch;
+}
+.big-card {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(20, 24, 52, 0.78), rgba(26, 12, 24, 0.88));
+  border: 1.5px solid rgba(226, 183, 68, 0.32);
+  border-radius: 26px;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(14px);
+}
+.big-number {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 20px rgba(226, 183, 68, 0.5));
+}
+.qr-card {
+  text-align: center;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(24, 20, 54, 0.85), rgba(28, 12, 30, 0.9));
+  border: 1.5px solid rgba(226, 183, 68, 0.45);
+  border-radius: 26px;
+  box-shadow: var(--shadow-lg), 0 0 35px rgba(226, 183, 68, 0.25);
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.qr-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(226, 183, 68, 0.85);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 45px rgba(226, 183, 68, 0.45);
+}
+.qr-luxury-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  background: linear-gradient(135deg, rgba(226, 183, 68, 0.2), rgba(255, 0, 46, 0.22));
+  border: 1px solid rgba(226, 183, 68, 0.4);
+  padding: 3px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 12px rgba(226, 183, 68, 0.25);
+}
+.qr-image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(226, 183, 68, 0.75), rgba(255, 0, 46, 0.55), rgba(56, 189, 248, 0.45));
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65), 0 0 30px rgba(226, 183, 68, 0.35);
+  margin: 10px auto;
+  max-width: 240px;
+  transition: transform 0.35s ease;
+}
+.qr-card:hover .qr-image-wrapper {
+  transform: scale(1.03);
+}
+.qr-image-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 17px;
+  display: block;
+}
+.qr-hover-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(8, 10, 24, 0.88);
+  border: 1px solid rgba(226, 183, 68, 0.5);
+  color: var(--gold-bright);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+.qr-card:hover .qr-hover-hint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.qr-tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--gold-champagne);
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(226, 183, 68, 0.35);
+}
+
+/* Footer */
+footer {
+  position: relative;
+  z-index: 2;
+  padding: 55px 20px 75px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13.5px;
+  border-top: 1px solid rgba(226, 183, 68, 0.22);
+  background: linear-gradient(180deg, rgba(6, 8, 20, 0.75), rgba(4, 5, 14, 0.95));
+  backdrop-filter: blur(10px);
+}
+footer strong {
+  color: var(--gold-champagne);
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 860px) {
+  .counter-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .future {
+    grid-template-columns: 1fr;
+  }
+  .letter {
+    padding: 30px 24px;
+  }
+
+  /* Responsive Timeline (Moves line to the left) */
+  .timeline-wrap::before {
+    left: 20px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 48px;
+    padding-right: 8px;
+    left: 0 !important;
+    text-align: left !important;
+  }
+  .timeline-node {
+    left: 10px !important;
+    right: auto !important;
+  }
+  .timeline-item.milestone-start {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .timeline-item.milestone-start .timeline-node {
+    left: 20px !important;
+    top: 100% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    width: calc(100% - 16px);
+    top: 10px;
+    padding: 8px 12px;
+  }
+  .brand {
+    font-size: 13px;
+  }
+  .brand span {
+    display: none;
+  }
+  .brand::after {
+    content: "Pika & Mery";
+  }
+  .navlinks a {
+    padding: 5px 8px;
+    font-size: 11.5px;
+  }
+  .hero {
+    padding: 95px 14px 55px;
+  }
+  .logo-container {
+    width: 130px;
+    height: 130px;
+  }
+  .hero-title {
+    font-size: 24px;
+    letter-spacing: 1.5px;
+  }
+  .counter-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .counter-card {
+    padding: 14px 4px 12px;
+    border-radius: 14px;
+  }
+  .counter-number {
+    font-size: 24px;
+  }
+  .counter-label {
+    font-size: 9.5px;
+    letter-spacing: 1px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn-pill {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 20px;
+  }
+  .letter {
+    padding: 24px 16px;
+    border-radius: 20px;
+  }
+  .letter p {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- 1. TEMPO DI SBLOCCO (Sblocco automatico 31 Marzo) -->
+<!-- ========================================== -->
+<div id="lock-screen">
+  <div class="lock-card countdown-card lock-view-anim" id="countdown-box">
+    <div class="lock-logo-wrap">
+      <img src="assets/logo.png" alt="Logo">
+    </div>
+    <div class="lock-countdown-badge">✦ Tempo di Sblocco ✦</div>
+    <h2 class="lock-title">Il Nostro Spazio</h2>
+    <p class="lock-subtitle">Questo posto speciale si sbloccherà automaticamente il <strong>31 Marzo</strong> ✨</p>
+    
+    <!-- 5 Glowing Counter Boxes like Friendship Counter -->
+    <div class="unlock-counter-grid">
+      <div class="unlock-counter-card">
+        <span class="unlock-counter-number" id="u-months">00</span>
+        <span class="unlock-counter-label">Mesi</span>
+      </div>
+      <div class="unlock-counter-card">
+        <span class="unlock-counter-number" id="u-days">00</span>
+        <span class="unlock-counter-label">Giorni</span>
+      </div>
+      <div class="unlock-counter-card">
+        <span class="unlock-counter-number" id="u-hours">00</span>
+        <span class="unlock-counter-label">Ore</span>
+      </div>
+      <div class="unlock-counter-card">
+        <span class="unlock-counter-number" id="u-minutes">00</span>
+        <span class="unlock-counter-label">Min</span>
+      </div>
+      <div class="unlock-counter-card">
+        <span class="unlock-counter-number" id="u-seconds">00</span>
+        <span class="unlock-counter-label">Sec</span>
+      </div>
+    </div>
+
+    <div class="unlock-status-note" id="u-status-note">
+      ⏳ Conto alla rovescia attivo verso il 31 Marzo ✨
+    </div>
+  </div>
+</div>
+
+<!-- Interactive Particle Starfield -->
+<canvas id="star-canvas"></canvas>
+
+<!-- Ambient Glow Orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a class="brand" href="#home">
+    <span class="brand-dot"></span>
+    <span>Pika-Pika & Mery</span>
+  </a>
+  <div class="navlinks">
+    <a href="#home">Tempo</a>
+    <a href="#storia">Storia</a>
+    <a href="#lettera">Lettera</a>
+    <a href="#futuro">Futuro</a>
+  </div>
+</nav>
+
+<!-- Hero Section with TikTok Style Friendship Counter -->
+<header class="hero" id="home">
+  <div class="hero-inner">
+    
+    <!-- Logo with Glowing Pulse -->
+    <div class="logo-container">
+      <div class="logo-glow-ring"></div>
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="Pika-Pika & Pipina Logo">
+      </div>
+    </div>
+
+    <!-- Friendship Badge -->
+    <div class="eyebrow">
+      <span>✨</span> Iniziata il 23 Luglio 2026 • Ore 17:09 <span>✨</span>
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="hero-title">Il Nostro Tempo Insieme</h1>
+    <p class="hero-subtitle">
+      Un piccolo spazio che racconta la nostra amicizia. Ogni secondo che passa è un momento in più che ci portiamo nel cuore.
+    </p>
+
+    <!-- 6 Glowing Counter Boxes -->
+    <div class="counter-grid">
+      <div class="counter-card">
+        <span class="counter-number" id="c-years">00</span>
+        <span class="counter-label">Anni</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-number" id="c-months">00</span>
+        <span class="counter-label">Mesi</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-number" id="c-days">00</span>
+        <span class="counter-label">Giorni</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-number" id="c-hours">00</span>
+        <span class="counter-label">Ore</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-number" id="c-minutes">00</span>
+        <span class="counter-label">Min</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-number" id="c-seconds">00</span>
+        <span class="counter-label">Sec</span>
+      </div>
+    </div>
+
+    <!-- Glowing Action Buttons -->
+    <div class="hero-actions">
+      <a class="btn-pill primary" href="#storia">
+        La Nostra Storia ✨
+      </a>
+      <a class="btn-pill" href="#lettera">
+        Leggi la Lettera 💌
+      </a>
+      <a class="btn-pill" href="#futuro">
+        Il Nostro QR ✨
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- ==================================================== -->
+<!-- VERTICAL TIMELINE SECTION: STORIA & RICORDI          -->
+<!-- ==================================================== -->
+<section id="storia">
+  <div class="section-title reveal">
+    <div class="mini">Linea del Tempo</div>
+    <h2>La Nostra Storia</h2>
+    <p>Tutti i momenti, i ricordi e le nostre avventure in ordine di viaggio.</p>
+  </div>
+
+  <div class="timeline-wrap">
+    
+    <!-- 1. INITIAL TEXT MILESTONE (Prima della prima foto) -->
+    <div class="timeline-item milestone-start reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-tag">✨ Il Nostro Inizio &bull; 23/07/2026</div>
+        <h3>Come Tutto È Cominciato</h3>
+        <p>
+          Tutto è iniziato quando sei tornata in ospedale dopo tanto tempo. Ti sei seduta sul bancone fuori dalla reception per stare vicina a me. Abbiamo parlato tantissimo e, quando sei stata presa come tirocinante, ho ascoltato la tua spiegazione, quella che ti aveva dato la nostra Renna preferita. Da lì, giorno dopo giorno, siamo arrivati a darci la buonanotte e il buongiorno.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. Duo delle renne (Left) -->
+    <div class="timeline-item left reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(0)">
+          <img src="assets/duo_delle_renne.jpg" alt="Duo delle renne" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Duo delle renne</h3>
+        <p>La nostra avventura con la renna preferita che ci ha uniti fin dall'inizio.</p>
+      </div>
+    </div>
+
+    <!-- 3. Mamma cattiva in bici (Right) -->
+    <div class="timeline-item right reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(1)">
+          <img src="assets/mamma_cattiva_inBici.jpg" alt="Mamma cattiva in bici che vuole picchiare il figlio" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Mamma cattiva in bici</h3>
+        <p>Mamma cattiva in bici che vuole picchiare il figlio! 😂</p>
+      </div>
+    </div>
+
+    <!-- 4. Lotta Madre Figlio (Left) -->
+    <div class="timeline-item left reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(2)">
+          <img src="assets/lotta_madre_figlio.jpg" alt="Lotta Madre Figlio durante il lavoro della madre" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Febbraio 2026</div>
+        <h3>Lotta Madre - Figlio</h3>
+        <p>Lotta Madre Figlio durante il lavoro della madre nei momenti più caotici.</p>
+      </div>
+    </div>
+
+    <!-- 5. Mery distratta (Right) -->
+    <div class="timeline-item right reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(3)">
+          <img src="assets/Mery_distratta.jpg" alt="Mamma distratta che si dimentica il libro per il rifornimento della bancarella" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Mamma distratta</h3>
+        <p>Mamma distratta che si dimentica il libro per il rifornimento della bancarella.</p>
+      </div>
+    </div>
+
+    <!-- 6. Mery in bici (Left) -->
+    <div class="timeline-item left reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(4)">
+          <img src="assets/Mery_inBici.jpg" alt="Stranamente la mamma è tranquilla" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Passeggiata in bici</h3>
+        <p>Stranamente la mamma è tranquilla e pacifica per una volta.</p>
+      </div>
+    </div>
+
+    <!-- 7. Mery Hello Kitty (Right) -->
+    <div class="timeline-item right reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(5)">
+          <img src="assets/Mery_hellokitty.jpg" alt="Mamma in lotto Hello Kitty" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Mamma Hello Kitty</h3>
+        <p>Mamma in lotto Hello Kitty: stile e dolcezza ovunque!</p>
+      </div>
+    </div>
+
+    <!-- 8. Mery Minions (Left) -->
+    <div class="timeline-item left reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(6)">
+          <img src="assets/Mery_minions.jpg" alt="Mery Minions" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Mery Minions</h3>
+        <p>Versione Minions super simpatica che non potevamo non immortalare.</p>
+      </div>
+    </div>
+
+    <!-- 9. Mery aspetta immobiliare (Right) -->
+    <div class="timeline-item right reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(7)">
+          <img src="assets/Mery_aspetta_immobiliare.jpg" alt="Un'amica che ti tiene compagnia ovunque vada" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Sempre Insieme</h3>
+        <p>Un'amica che ti tiene compagnia ovunque tu vada, in qualsiasi momento.</p>
+      </div>
+    </div>
+
+    <!-- 10. Segnalazione Mery (Left) -->
+    <div class="timeline-item left reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(8)">
+          <img src="assets/Segnalazione_Mery.jpg" alt="Ribellione del figlio che segnala la propria mamma" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Agosto 2026</div>
+        <h3>Ribellione del figlio</h3>
+        <p>Ribellione del figlio che segnala la propria mamma per i suoi scherzi!</p>
+      </div>
+    </div>
+
+    <!-- 11. Una mamma in moto (Right) -->
+    <div class="timeline-item right reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(9)">
+          <img src="assets/Mery_in_moto.jpg" alt="Una mamma in moto" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 28 Agosto 2026</div>
+        <h3>Una mamma in moto</h3>
+        <p>Una mamma in moto che sfreccia per le strade della città al tramonto!</p>
+      </div>
+    </div>
+
+    <!-- 12. Contro spionaggio con un nostro chirurgo su atlantis 1 (Left) -->
+    <div class="timeline-item left reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(10)">
+          <img src="assets/contro_spionaggio_chirurgo_1.jpg" alt="Contro spionaggio con un nostro chirurgo su atlantis" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Settembre 2026</div>
+        <h3>Contro Spionaggio</h3>
+        <p>Contro spionaggio con un nostro chirurgo su atlantis.</p>
+      </div>
+    </div>
+
+    <!-- 13. Contro spionaggio con un nostro chirurgo su atlantis 2 (Right) -->
+    <div class="timeline-item right reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(11)">
+          <img src="assets/contro_spionaggio_chirurgo_2.jpg" alt="Contro spionaggio con un nostro chirurgo su atlantis" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Settembre 2026</div>
+        <h3>Missione Chirurgo</h3>
+        <p>Contro spionaggio con un nostro chirurgo su atlantis.</p>
+      </div>
+    </div>
+
+    <!-- 14. Dopo un po di corse si chiamano i pompieri per aiutare una'amica (Left) -->
+    <div class="timeline-item left reveal">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-media" onclick="openLightbox(12)">
+          <img src="assets/chiamata_pompieri_amica.jpg" alt="Dopo un po di corse si chiamano i pompieri per aiutare una'amica" loading="lazy">
+        </div>
+        <div class="timeline-tag">📅 14 Settembre 2026</div>
+        <h3>Soccorso tra le Mura</h3>
+        <p>Dopo un po di corse si chiamano i pompieri per aiutare una'amica.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Heartfelt Letter Section -->
+<section id="lettera">
+  <div class="section-title reveal">
+    <div class="mini">Una lettera speciale</div>
+    <h2>Per te.</h2>
+  </div>
+  <div class="letter reveal">
+    <p>Ci conosciamo da poco, forse non abbastanza per poter raccontare una vita intera insieme, ma abbastanza per capire che sei diventata una persona davvero importante per me.</p>
+    <p>A volte non servono anni per affezionarsi davvero a qualcuno. Ci sono persone che entrano nella nostra vita quasi senza fare rumore e, giorno dopo giorno, diventano parte delle nostre giornate, dei nostri pensieri e dei nostri sorrisi. Tu sei stata una di quelle persone.</p>
+    <p>Ho voluto creare questo piccolo spazio per noi perché non volevo regalarti semplicemente qualcosa che, prima o poi, sarebbe finito in un cassetto. Volevo lasciarti qualcosa che potesse raccontare quello che siamo, i momenti che abbiamo vissuto e tutti quelli che, spero, ci aspettano ancora.</p>
+    <p>Vorrei che questo sito fosse una piccola macchina del tempo. Un posto in cui tornare tra qualche mese, tra un anno o magari tra tantissimo tempo e rileggere queste parole sorridendo, ricordando tutte quelle piccole cose che oggi sembrano normali, ma che un giorno potrebbero diventare ricordi importantissimi.</p>
+    <p>Tutto è iniziato quando sei tornata in ospedale dopo tanto tempo. Ti sei seduta sul bancone fuori dalla reception semplicemente per stare vicino a me. Forse in quel momento nessuno dei due avrebbe potuto immaginare quanto sarebbe diventata importante quella semplice presenza.</p>
+    <p>Abbiamo iniziato a parlare tantissimo, di tutto e di niente, di cose serie e di cose completamente senza senso. Poi sei stata presa come tirocinante e io ho ascoltato la tua spiegazione, quella che ti aveva dato la nostra Renna preferita.</p>
+    <p>Da lì, lentamente, abbiamo iniziato a sentirci sempre di più.</p>
+    <p>Sono arrivati i buongiorno, le buonanotte, le conversazioni infinite, le risate improvvise e tutte quelle piccole cose che, prese singolarmente, sembrano niente, ma che insieme hanno costruito qualcosa di speciale.</p>
+    <p>Senza accorgercene, sei diventata una delle persone che aspettavo di sentire durante la giornata.</p>
+    <p><strong>Oggi siamo una coppia di amici inseparabili.</strong></p>
+    <p>Ci vogliamo un mondo di bene, ci prendiamo in giro, facciamo gli stupidi, ridiamo per cose che probabilmente nessun altro capirebbe e, quando serve, sappiamo anche esserci seriamente l'uno per l'altra.</p>
+    <p>Ed è proprio questo che considero speciale.</p>
+    <p>Perché non devi essere sempre felice con me. Non devi fingere che vada tutto bene. Puoi raccontarmi quello che hai dentro, puoi sfogarti, puoi parlare per ore oppure semplicemente stare in silenzio.</p>
+    <p>Io ci sono.</p>
+    <p>Soprattutto nei momenti in cui tutto sembra un po' più pesante.</p>
+    <p>Non posso prometterti di risolvere ogni cosa, ma posso prometterti che, per quanto dipenda da me, non dovrai sentirti sola. Anche se siamo lontani, voglio che tu sappia che la distanza non cambia il fatto che io sia qui.</p>
+    <p>E non voglio che tu senta di dovermi dare qualcosa in cambio.</p>
+    <p>Voglio semplicemente esserci perché ci tengo a te.</p>
+    <p>Forse è proprio stando vicino a una persona nei momenti più difficili che ci si rende conto di quanto sia diventata importante.</p>
+    <p>E io, ultimamente, mi sono reso conto di una cosa: mi importa di te molto più di quanto avrei mai immaginato quando ci siamo conosciuti.</p>
+    <p>Non so cosa ci riserverà il futuro e non voglio decidere adesso cosa dovrà diventare il nostro rapporto.</p>
+    <p>Mi basta sapere che voglio continuare a conoscerti, a condividere momenti con te e a vedere dove ci porteranno tutte queste piccole cose che stiamo vivendo.</p>
+    <p>Perché alcune delle cose più belle della vita non hanno bisogno di essere programmate.</p>
+    <p>A volte basta lasciare che accadano.</p>
+    <p>Magari tra due anni torneremo qui e rideremo leggendo queste parole. Magari avremo vissuto tantissime altre avventure, avremo aggiunto centinaia di ricordi e ci sembrerà incredibile quanto siamo cambiati.</p>
+    <p>E magari, rileggendo questa lettera, capiremo che alcune cose che oggi sembravano soltanto piccole sensazioni stavano già diventando qualcosa di importante.</p>
+    <p>Non so quale sarà la prossima pagina.</p>
+    <p>So solo che mi piacerebbe scriverla insieme a te.</p>
+    <p>Grazie per essere entrata nella mia vita.<br>
+    Grazie per ogni risata, ogni messaggio, ogni scherzo, ogni conversazione e anche per quei momenti semplicissimi che magari non ricorderemo nemmeno tra qualche anno, ma che oggi significano tanto.</p>
+    <p>E soprattutto, grazie per essere semplicemente tu.</p>
+    <p>Questa non è una fine.<br>
+    È solo una delle prime pagine di qualcosa che dobbiamo ancora vivere.</p>
+    <p>Il resto lo scriveremo piano piano, senza fretta, un ricordo alla volta. ✨</p>
+    <div class="signature"><strong>— Pika-Pika & Mery — per sempre nel nostro piccolo mondo. ✨</strong></div>
+  </div>
+</section>
+
+<!-- Future & QR Code Section -->
+<section id="futuro">
+  <div class="section-title reveal">
+    <div class="mini">Il futuro</div>
+    <h2>Non è una pagina da riempire subito.</h2>
+    <p>È uno spazio che può cambiare ogni volta che nasce un nuovo ricordo.</p>
+  </div>
+  <div class="future">
+    <div class="card big-card reveal">
+      <div class="big-number">∞</div>
+      <h3>Un sito che continua nel tempo.</h3>
+      <p>Puoi aggiungere nuovi capitoli, foto e messaggi mantenendo sempre lo stesso indirizzo. Il QR stampato sul regalo non deve cambiare mai!</p>
+    </div>
+    <div class="card qr-card reveal" onclick="openQrLightbox()" style="cursor: pointer;">
+      <div class="qr-luxury-badge">✦ Luxury Edition ✦</div>
+      <h3>Il Nostro QR Esclusivo ✨</h3>
+      <div class="qr-image-wrapper">
+        <img src="assets/qrcode_luxury.jpg?v=6" alt="QR Code Esclusivo">
+        <div class="qr-hover-hint">🔍 Ingrandisci QR</div>
+      </div>
+      <p class="qr-tagline">« Controlla cosa ho combinato »</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="reveal">
+  Creato con <strong>cura, una complicità rara e tanti momenti speciali ancora da vivere. ✨</strong><br>
+  Pika-Pika & Mery &bull; Per sempre
+</footer>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lb-close" aria-label="Chiudi">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Precedente">‹</button>
+  <div class="lightbox-content">
+    <img id="lb-img" src="" alt="Foto ingrandita">
+    <div class="lightbox-caption" id="lb-cap"></div>
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Successiva">›</button>
+</div>
+
+<script>
+// ==========================================
+// 1. TEMPO DI SBLOCCO (Sblocco automatico 31 Marzo)
+// ==========================================
+const lockScreen = document.getElementById('lock-screen');
+
+function getUnlockTargetDate() {
+  const now = new Date();
+  let targetYear = now.getFullYear();
+  if (now.getMonth() > 2 || (now.getMonth() === 2 && now.getDate() >= 31)) {
+    targetYear++;
+  }
+  return new Date(targetYear, 2, 31, 0, 0, 0); // 31 Marzo ore 00:00:00
+}
+
+function unlockSite() {
+  if (lockScreen && !lockScreen.classList.contains('unlocked')) {
+    lockScreen.classList.add('unlocked');
+    document.body.style.overflow = '';
+  }
+}
+
+function updateUnlockCountdown() {
+  const now = new Date();
+  const targetDate = getUnlockTargetDate();
+  const diffMs = targetDate - now;
+
+  // Sblocco automatico istantaneo se si raggiunge o si è già oltre il 31 Marzo
+  if (diffMs <= 0) {
+    const elMonths = document.getElementById('u-months');
+    const elDays = document.getElementById('u-days');
+    const elHours = document.getElementById('u-hours');
+    const elMin = document.getElementById('u-minutes');
+    const elSec = document.getElementById('u-seconds');
+    if (elMonths) elMonths.textContent = "00";
+    if (elDays) elDays.textContent = "00";
+    if (elHours) elHours.textContent = "00";
+    if (elMin) elMin.textContent = "00";
+    if (elSec) elSec.textContent = "00";
+
+    const statusNote = document.getElementById('u-status-note');
+    if (statusNote) {
+      statusNote.innerHTML = "✨ <strong>Il momento è arrivato! Il sito è sbloccato.</strong> ✨";
+      statusNote.classList.add('unlocked-ready');
+    }
+    unlockSite();
+    return;
+  }
+
+  // Calcolo Mesi, Giorni, Ore, Minuti, Secondi rimanenti
+  let tempDate = new Date(now.getTime());
+  let months = 0;
+  while (true) {
+    let nextMonth = new Date(tempDate.getFullYear(), tempDate.getMonth() + 1, tempDate.getDate(), tempDate.getHours(), tempDate.getMinutes(), tempDate.getSeconds());
+    if (nextMonth <= targetDate) {
+      months++;
+      tempDate = nextMonth;
+    } else {
+      break;
+    }
+  }
+
+  let remainingMs = targetDate - tempDate;
+  let days = Math.floor(remainingMs / (1000 * 60 * 60 * 24));
+  remainingMs -= days * (1000 * 60 * 60 * 24);
+  let hours = Math.floor(remainingMs / (1000 * 60 * 60));
+  remainingMs -= hours * (1000 * 60 * 60);
+  let minutes = Math.floor(remainingMs / (1000 * 60));
+  remainingMs -= minutes * (1000 * 60);
+  let seconds = Math.floor(remainingMs / 1000);
+
+  const elMonths = document.getElementById('u-months');
+  const elDays = document.getElementById('u-days');
+  const elHours = document.getElementById('u-hours');
+  const elMin = document.getElementById('u-minutes');
+  const elSec = document.getElementById('u-seconds');
+  if (elMonths) elMonths.textContent = String(months).padStart(2, '0');
+  if (elDays) elDays.textContent = String(days).padStart(2, '0');
+  if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+  if (elMin) elMin.textContent = String(minutes).padStart(2, '0');
+  if (elSec) elSec.textContent = String(seconds).padStart(2, '0');
+}
+
+// Verifica iniziale: se la data del 31 Marzo è già arrivata si sblocca, altrimenti blocca lo scroll
+const nowInit = new Date();
+const targetInit = getUnlockTargetDate();
+if (nowInit >= targetInit || sessionStorage.getItem('site_unlocked') === 'true') {
+  unlockSite();
+} else {
+  document.body.style.overflow = 'hidden';
+}
+
+updateUnlockCountdown();
+setInterval(updateUnlockCountdown, 1000);
+
+// ==========================================
+// 2. FRIENDSHIP REAL-TIME LIVE COUNTER
+// Start Date: 23 Luglio 2026 alle 17:09:00
+// ==========================================
+const startTimestamp = new Date(2026, 6, 23, 17, 9, 0);
+
+function updateFriendshipCounter() {
+  const now = new Date();
+  
+  let years = now.getFullYear() - startTimestamp.getFullYear();
+  let months = now.getMonth() - startTimestamp.getMonth();
+  let days = now.getDate() - startTimestamp.getDate();
+  let hours = now.getHours() - startTimestamp.getHours();
+  let minutes = now.getMinutes() - startTimestamp.getMinutes();
+  let seconds = now.getSeconds() - startTimestamp.getSeconds();
+
+  if (seconds < 0) {
+    seconds += 60;
+    minutes--;
+  }
+  if (minutes < 0) {
+    minutes += 60;
+    hours--;
+  }
+  if (hours < 0) {
+    hours += 24;
+    days--;
+  }
+  if (days < 0) {
+    const prevMonthDays = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+    days += prevMonthDays;
+    months--;
+  }
+  if (months < 0) {
+    months += 12;
+    years--;
+  }
+
+  if (years < 0) {
+    years = 0; months = 0; days = 0; hours = 0; minutes = 0; seconds = 0;
+  }
+
+  document.getElementById('c-years').textContent = String(years).padStart(2, '0');
+  document.getElementById('c-months').textContent = String(months).padStart(2, '0');
+  document.getElementById('c-days').textContent = String(days).padStart(2, '0');
+  document.getElementById('c-hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('c-minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('c-seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+updateFriendshipCounter();
+setInterval(updateFriendshipCounter, 1000);
+
+// ==========================================
+// 3. CANVAS STARRY PARTICLES
+// ==========================================
+const canvas = document.getElementById('star-canvas');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  initStars();
+});
+resizeCanvas();
+
+function initStars() {
+  stars = [];
+  const starCount = Math.floor((canvas.width * canvas.height) / 8000);
+  const starColors = [
+    '#38bdf8', '#93c5fd', '#60a5fa', '#0ea5e9', // Zaffiro & Cielo
+    '#ff002e', '#ff1a3d', '#b8001a', '#e60026', // Rosso Sangue Vivo & Cremisi
+    '#fef08a', '#e2b744', '#fcd34d',             // Oro imperiale & Champagne
+    '#ffffff', '#ffffff'                          // Diamante puro
+  ];
+  for (let i = 0; i < starCount; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.8 + 0.5,
+      alpha: Math.random() * 0.8 + 0.2,
+      alphaSpeed: (Math.random() * 0.02 + 0.005) * (Math.random() > 0.5 ? 1 : -1),
+      vy: -(Math.random() * 0.25 + 0.08),
+      vx: (Math.random() - 0.5) * 0.1,
+      color: starColors[Math.floor(Math.random() * starColors.length)]
+    });
+  }
+}
+initStars();
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  for (let i = 0; i < stars.length; i++) {
+    const s = stars[i];
+    s.y += s.vy;
+    s.x += s.vx;
+    s.alpha += s.alphaSpeed;
+
+    if (s.alpha > 0.95 || s.alpha < 0.15) {
+      s.alphaSpeed = -s.alphaSpeed;
+    }
+    if (s.y < -10) {
+      s.y = canvas.height + 10;
+      s.x = Math.random() * canvas.width;
+    }
+    if (s.x < -10) s.x = canvas.width + 10;
+    if (s.x > canvas.width + 10) s.x = -10;
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(0.1, Math.min(1, s.alpha));
+    ctx.shadowBlur = s.radius * 5;
+    ctx.shadowColor = s.color;
+    ctx.fillStyle = s.color;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  requestAnimationFrame(animateStars);
+}
+animateStars();
+
+// ==========================================
+// 4. INTERSECTION OBSERVER (Scroll Reveal)
+// ==========================================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ==========================================
+// 5. TIMELINE GALLERY & LIGHTBOX
+// ==========================================
+const galleryPhotos = [
+  { src: "assets/duo_delle_renne.jpg", cap: "Duo delle renne (14 Agosto 2026)" },
+  { src: "assets/mamma_cattiva_inBici.jpg", cap: "Mamma cattiva in bici che vuole picchiare il figlio (14 Agosto 2026)" },
+  { src: "assets/lotta_madre_figlio.jpg", cap: "Lotta Madre Figlio durante il lavoro della madre (14 Febbraio 2026)" },
+  { src: "assets/Mery_distratta.jpg", cap: "Mamma distratta che si dimentica il libro per il rifornimento della bancarella (14 Agosto 2026)" },
+  { src: "assets/Mery_inBici.jpg", cap: "Stranamente la mamma è tranquilla (14 Agosto 2026)" },
+  { src: "assets/Mery_hellokitty.jpg", cap: "Mamma in lotto Hello Kitty (14 Agosto 2026)" },
+  { src: "assets/Mery_minions.jpg", cap: "Mery Minions (14 Agosto 2026)" },
+  { src: "assets/Mery_aspetta_immobiliare.jpg", cap: "Un'amica che ti tiene compagnia ovunque vada (14 Agosto 2026)" },
+  { src: "assets/Segnalazione_Mery.jpg", cap: "Ribellione del figlio che segnala la propria mamma (14 Agosto 2026)" },
+  { src: "assets/Mery_in_moto.jpg", cap: "Una mamma in moto che sfreccia per la città al tramonto (28 Agosto 2026)" },
+  { src: "assets/contro_spionaggio_chirurgo_1.jpg", cap: "Contro spionaggio con un nostro chirurgo su atlantis (14 Settembre 2026)" },
+  { src: "assets/contro_spionaggio_chirurgo_2.jpg", cap: "Contro spionaggio con un nostro chirurgo su atlantis (14 Settembre 2026)" },
+  { src: "assets/chiamata_pompieri_amica.jpg", cap: "Dopo un po di corse si chiamano i pompieri per aiutare una'amica (14 Settembre 2026)" }
+];
+
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCap = document.getElementById('lb-cap');
+const lbClose = document.getElementById('lb-close');
+const lbPrev = document.getElementById('lb-prev');
+const lbNext = document.getElementById('lb-next');
+let currentIndex = 0;
+let isAnimating = false;
+
+function openLightbox(index) {
+  currentIndex = index;
+  const item = galleryPhotos[currentIndex];
+  lbImg.src = item.src;
+  lbCap.textContent = item.cap;
+  lbPrev.style.display = 'grid';
+  lbNext.style.display = 'grid';
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function openQrLightbox() {
+  lbImg.src = "assets/qrcode_luxury.jpg?v=6";
+  lbCap.textContent = "QR Code Esclusivo ✨ — « Controlla cosa ho combinato »";
+  lbPrev.style.display = 'none';
+  lbNext.style.display = 'none';
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function animatedChange(newIdx, direction) {
+  if (isAnimating) return;
+  isAnimating = true;
+  const outClass = direction === 1 ? 'lb-out' : 'lb-out-prev';
+  const inClass = direction === 1 ? 'lb-in' : 'lb-in-prev';
+  
+  lbImg.classList.add(outClass);
+  lbCap.style.opacity = '0';
+  lbCap.style.transform = 'translateY(8px)';
+  
+  setTimeout(() => {
+    currentIndex = newIdx;
+    const item = galleryPhotos[currentIndex];
+    lbImg.classList.remove(outClass);
+    lbImg.classList.add(inClass);
+    lbImg.src = item.src;
+    lbCap.textContent = item.cap;
+    
+    void lbImg.offsetWidth;
+    requestAnimationFrame(() => {
+      lbImg.classList.remove(inClass);
+      lbCap.style.opacity = '1';
+      lbCap.style.transform = 'translateY(0)';
+      setTimeout(() => {
+        isAnimating = false;
+      }, 350);
+    });
+  }, 280);
+}
+
+function showPrev() {
+  const newIdx = (currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+  animatedChange(newIdx, -1);
+}
+
+function showNext() {
+  const newIdx = (currentIndex + 1) % galleryPhotos.length;
+  animatedChange(newIdx, 1);
+}
+
+lbClose.addEventListener('click', closeLightbox);
+lbPrev.addEventListener('click', showPrev);
+lbNext.addEventListener('click', showNext);
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (lbPrev.style.display !== 'none') {
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  }
+});
+</script>
+
+</body>
+</html>
